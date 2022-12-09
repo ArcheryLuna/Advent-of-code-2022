@@ -1,1 +1,2 @@
-./Day1/node_modules
+/Day\ */node_modules
+/Day\ */dist
