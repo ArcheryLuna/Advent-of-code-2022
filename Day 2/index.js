@@ -50,7 +50,38 @@ function PartOne() {
     return output.reduce((a, b) => a + b, 0);
 }
 
-console.log(readInputFile());
+const Solutions = {
+    A: {
+        X: Movements.scissors,
+        Y: Movements.rock,
+        Z: Movements.paper,
+      },
+      B: {
+        X: Movements.rock,
+        Y: Movements.paper,
+        Z: Movements.scissors,
+      },
+      C: {
+        X: Movements.paper,
+        Y: Movements.scissors,
+        Z: Movements.rock,
+      },
+}
+
+
+function PartTwo() {
+    const array = readInputFile();
+
+    const output = array.map((line) => {
+        const yourMove = mapInput[line[0]];
+        const ourMove = Solutions[line[0]][line[1]];
+
+        return scoring(ourMove, yourMove);
+    });
+
+    return output.reduce((a, b) => a + b, 0);
+}
 
 // Part One
 console.log("Part One: ", PartOne());
+console.log("Part Two: ", PartTwo());
