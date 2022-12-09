@@ -28,9 +28,22 @@ function GetTheLargest() {
         }
         arrayOfTotal.push(sum);
     }
-    console.log(Math.max(...arrayOfTotal));
+    return arrayOfTotal;
+}
 
+function PartTwo() {
+    const arrayOfTotal = GetTheLargest();
+
+    const sortedArray = arrayOfTotal.sort((a, b) => b - a);
+
+    const sumOfThree = sortedArray.slice(0, 3).reduce((a, b) => a + b, 0);
+    return sumOfThree
 }
 
 // Part One
-GetTheLargest();
+console.log("Part One: ");
+console.log(Math.max(...GetTheLargest()));
+
+// Part Two
+console.log("Part Two: ");
+console.log(PartTwo());
