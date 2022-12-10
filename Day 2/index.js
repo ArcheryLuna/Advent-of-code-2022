@@ -84,4 +84,5 @@ function PartTwo() {
 
 // Part One
 console.log("Part One: ", PartOne());
+// Part Two
 console.log("Part Two: ", PartTwo());
