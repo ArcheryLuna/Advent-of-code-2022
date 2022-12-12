@@ -70,7 +70,58 @@ public class Day7 {
     }
 
     static void PartTwo(dynamic input, dynamic grid) {
-        
+        int bestScore = 0;
+
+        for (int row = 1; row < grid.Count - 1; row++) {
+            for (int col = 1; col < grid[row].Count - 1; col++) {
+
+                int upScore = 0;
+                int downScore = 0;
+                int leftScore = 0;
+                int rightScore = 0;
+
+                int currentHeight = grid[row][col];
+
+                //left check
+                for(int leftCol = col-1; leftCol >= currentHeight; leftCol--){
+                    leftScore++;
+                    if(grid[row][leftCol] >= currentHeight){
+                        break;
+                    }
+                }
+
+                //right check
+                for(int rightCol = col+1; rightCol < grid[row].Count; rightCol++){
+                    rightScore++;
+                    if(grid[row][rightCol] >= currentHeight){
+                        break;
+                    }
+                }
+
+                //up check
+                for(int upRow = row-1; upRow >= 0; upRow--){
+                    upScore++;
+                    if(grid[upRow][col] >= currentHeight){
+                        break;
+                    }
+                }
+
+                //down check
+                for(int downRow = row+1; downRow < grid.Count; downRow++){
+                    downScore++;
+                    if(grid[downRow][col] >= currentHeight){
+                        break;
+                    }
+                }
+
+                int senarioScore = upScore * downScore * leftScore * rightScore;
+
+                if (senarioScore > bestScore){
+                    bestScore = senarioScore;
+                }
+            }
+        }
+        Console.WriteLine($"Part Two: {bestScore}");
     }
 
     public static void Main() 
